@@ -108,7 +108,7 @@ function updateEstimate() {
 
   var baseRate     = BASE[service];
   var freqDisc     = FREQ_DISCOUNT[freq] !== undefined ? FREQ_DISCOUNT[freq] : 0;
-  var volDisc      = volumeDiscount(cans);
+  var volDisc      = freq === 'One-Time' ? 0 : volumeDiscount(cans);
   var totalDisc    = Math.min(freqDisc + volDisc, 0.40);
   var pricePerCan  = baseRate * (1 - totalDisc);
   var perClean     = pricePerCan * cans;
