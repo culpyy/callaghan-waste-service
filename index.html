@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Callaghan Waste Service LLC</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">&#9855;</span>
+        <div class="logo-text">
+          <span class="company-name">Callaghan Waste Service</span>
+          <span class="company-tag">LLC &mdash; Mobile Can &amp; Dumpster Cleaning</span>
+        </div>
+      </div>
+      <nav>
+        <button class="nav-btn active" data-tab="residential">Residential</button>
+        <button class="nav-btn" data-tab="commercial">Commercial</button>
+        <button class="nav-btn cta" data-tab="quote">Get a Quote</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO (shown on all tabs until user scrolls) -->
+    <section class="hero" id="hero">
+      <div class="hero-content">
+        <h1>Clean Cans.<br>Fresh Property.<br>Zero Hassle.</h1>
+        <p>We follow your local trash pickup route and clean your bins the same day they're emptied — so you never have to deal with the mess.</p>
+        <button class="btn-primary" onclick="showTab('quote')">Schedule a Cleaning</button>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-it-works">
+      <div class="container">
+        <h2>How It Works</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <h3>Sign Up</h3>
+            <p>Tell us your address and trash pickup day. We match you to our route.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <h3>We Follow the Truck</h3>
+            <p>After your cans are emptied, our team arrives and deep-cleans them on the spot.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <h3>Fresh &amp; Done</h3>
+            <p>Cans are deodorized, sanitized, and returned to the curb — all before you get home.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB CONTENT -->
+    <div class="tab-wrapper">
+
+      <!-- RESIDENTIAL TAB -->
+      <section class="tab-content active" id="tab-residential">
+        <div class="container">
+          <h2>Residential Services</h2>
+          <p class="section-sub">Serving homeowners and HOAs. We keep your trash cans fresh so you don't have to.</p>
+
+          <div class="card-grid">
+            <div class="card">
+              <h3>Single Can Clean</h3>
+              <p>One-time deep clean for a single trash or recycling bin.</p>
+              <span class="tag">On-demand</span>
+            </div>
+            <div class="card">
+              <h3>Monthly Plan</h3>
+              <p>We clean your cans every month on pickup day — set it and forget it.</p>
+              <span class="tag">Most Popular</span>
+            </div>
+            <div class="card">
+              <h3>Quarterly Plan</h3>
+              <p>A deep clean four times a year, timed with your trash schedule.</p>
+              <span class="tag">Budget Friendly</span>
+            </div>
+            <div class="card">
+              <h3>HOA / Neighborhood Bundle</h3>
+              <p>Volume pricing for HOAs and communities. Keep every home on the block fresh.</p>
+              <span class="tag">Ask for Pricing</span>
+            </div>
+          </div>
+
+          <div class="info-block">
+            <h3>Why It Matters</h3>
+            <ul>
+              <li>Eliminates odors caused by bacteria and organic buildup</li>
+              <li>Reduces pests like flies, maggots, and raccoons</li>
+              <li>Extends the life of your trash containers</li>
+              <li>No mess left behind — all water and waste is captured</li>
+            </ul>
+          </div>
+
+          <button class="btn-primary" onclick="showTab('quote')">Get Residential Pricing</button>
+        </div>
+      </section>
+
+      <!-- COMMERCIAL TAB -->
+      <section class="tab-content" id="tab-commercial">
+        <div class="container">
+          <h2>Commercial Services</h2>
+          <p class="section-sub">Restaurants, retail, multi-family housing, and more. Keep your property clean and compliant.</p>
+
+          <div class="card-grid">
+            <div class="card">
+              <h3>Dumpster Cleaning</h3>
+              <p>Full interior and exterior cleaning of commercial dumpsters. Removes grease, odor, and buildup.</p>
+              <span class="tag">On-demand or Recurring</span>
+            </div>
+            <div class="card">
+              <h3>Multi-Family / Apartments</h3>
+              <p>Shared bin areas, roll-off containers, and dumpster pads cleaned on a recurring schedule.</p>
+              <span class="tag">Scheduled</span>
+            </div>
+            <div class="card">
+              <h3>Restaurant &amp; Food Service</h3>
+              <p>High-frequency cleaning to meet health code and keep your back lot compliant.</p>
+              <span class="tag">Weekly Available</span>
+            </div>
+            <div class="card">
+              <h3>Retail &amp; Office Parks</h3>
+              <p>Curb appeal matters. Keep shared dumpster enclosures clean and odor-free for tenants and customers.</p>
+              <span class="tag">Contract Pricing</span>
+            </div>
+          </div>
+
+          <div class="info-block">
+            <h3>Commercial Advantages</h3>
+            <ul>
+              <li>Fully mobile — no facility hookups needed</li>
+              <li>Self-contained water recovery (no runoff onto property)</li>
+              <li>Flexible scheduling around your pickup days</li>
+              <li>Invoice billing available for accounts</li>
+            </ul>
+          </div>
+
+          <button class="btn-primary" onclick="showTab('quote')">Request a Commercial Quote</button>
+        </div>
+      </section>
+
+      <!-- QUOTE TAB -->
+      <section class="tab-content" id="tab-quote">
+        <div class="container narrow">
+          <h2>Get a Quote</h2>
+          <p class="section-sub">Fill out the form below and we'll get back to you within 1 business day with pricing for your area.</p>
+
+          <form class="quote-form" id="quoteForm" onsubmit="handleQuote(event)">
+
+            <div class="form-group">
+              <label>Service Type</label>
+              <div class="radio-group">
+                <label class="radio-label">
+                  <input type="radio" name="serviceType" value="residential" required /> Residential
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="serviceType" value="commercial" /> Commercial
+                </label>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" placeholder="First" required />
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" placeholder="Last" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" placeholder="you@example.com" required />
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" placeholder="(555) 555-5555" />
+            </div>
+
+            <div class="form-group">
+              <label for="address">Service Address</label>
+              <input type="text" id="address" placeholder="123 Main St, City, State ZIP" required />
+            </div>
+
+            <div class="form-group">
+              <label for="pickupDay">Trash Pickup Day</label>
+              <select id="pickupDay" required>
+                <option value="">-- Select Day --</option>
+                <option>Monday</option>
+                <option>Tuesday</option>
+                <option>Wednesday</option>
+                <option>Thursday</option>
+                <option>Friday</option>
+                <option>Varies / Not Sure</option>
+              </select>
+            </div>
+
+            <div class="form-group" id="canCountGroup">
+              <label for="canCount">Number of Cans / Bins</label>
+              <input type="number" id="canCount" min="1" max="99" placeholder="e.g. 2" />
+            </div>
+
+            <div class="form-group">
+              <label for="frequency">Preferred Frequency</label>
+              <select id="frequency" required>
+                <option value="">-- Select --</option>
+                <option>One-Time</option>
+                <option>Monthly</option>
+                <option>Quarterly</option>
+                <option>Weekly (Commercial)</option>
+                <option>Custom / Let's Talk</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="notes">Additional Notes</label>
+              <textarea id="notes" rows="3" placeholder="Anything else we should know — gate codes, special containers, etc."></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary full-width">Submit Quote Request</button>
+          </form>
+
+          <div class="quote-success" id="quoteSuccess" style="display:none;">
+            <div class="success-icon">&#10003;</div>
+            <h3>Request Received!</h3>
+            <p>Thanks! We'll reach out within 1 business day with your quote.</p>
+          </div>
+
+        </div>
+      </section>
+
+    </div><!-- end tab-wrapper -->
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p><strong>Callaghan Waste Service LLC</strong></p>
+      <p>Mobile Trash Can &amp; Dumpster Cleaning &mdash; Residential &amp; Commercial</p>
+      <p class="footer-small">We clean after your trash pickup day &mdash; so your cans are always empty when we arrive.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
