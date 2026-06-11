@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Callaghan Waste Service LLC</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -11,7 +11,7 @@
   <header>
     <div class="header-inner">
       <div class="logo">
-        <span class="logo-icon">&#9855;</span>
+        <span class="logo-icon">CWS</span>
         <div class="logo-text">
           <span class="company-name">Callaghan Waste Service</span>
           <span class="company-tag">LLC &mdash; Mobile Can &amp; Dumpster Cleaning</span>
@@ -223,6 +223,12 @@
                 <option>Weekly (Commercial)</option>
                 <option>Custom / Let's Talk</option>
               </select>
+            </div>
+
+            <div class="price-estimate" id="priceEstimate" style="display:none;">
+              <div class="estimate-label">Estimated Price</div>
+              <div class="estimate-amount" id="estimateAmount"></div>
+              <div class="estimate-detail" id="estimateDetail"></div>
             </div>
 
             <div class="form-group">

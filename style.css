@@ -19,10 +19,14 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Segoe UI', Arial, sans-serif;
+  font-family: -apple-system, 'Segoe UI', Arial, sans-serif;
   color: var(--text);
   background: var(--white);
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* prevent iOS text size adjust on rotation */
+  -webkit-text-size-adjust: 100%;
 }
 
 .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
@@ -31,10 +35,13 @@ body {
 /* ===== HEADER ===== */
 header {
   background: var(--navy);
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 100;
   box-shadow: 0 2px 8px rgba(0,0,0,.3);
+  /* extend bg into notch area on iPhone */
+  padding-top: env(safe-area-inset-top);
 }
 
 .header-inner {
@@ -51,9 +58,15 @@ header {
 .logo { display: flex; align-items: center; gap: 12px; }
 
 .logo-icon {
-  font-size: 2rem;
-  color: var(--blue);
+  font-size: .85rem;
+  font-weight: 900;
+  color: var(--white);
+  background: var(--blue);
+  border-radius: 6px;
+  padding: 6px 8px;
+  letter-spacing: .5px;
   line-height: 1;
+  flex-shrink: 0;
 }
 
 .logo-text { display: flex; flex-direction: column; }
@@ -75,15 +88,21 @@ header {
 nav { display: flex; gap: 8px; flex-wrap: wrap; }
 
 .nav-btn {
+  -webkit-appearance: none;
+  appearance: none;
   background: transparent;
   border: 2px solid transparent;
   color: #cbd5e1;
-  padding: 8px 18px;
+  padding: 10px 18px;
   border-radius: 6px;
   font-size: .9rem;
   font-weight: 600;
   cursor: pointer;
   transition: all .2s;
+  /* min touch target for iOS */
+  min-height: 44px;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .nav-btn:hover { color: var(--white); border-color: #3b82f6; }
@@ -259,10 +278,12 @@ nav { display: flex; gap: 8px; flex-wrap: wrap; }
 
 /* ===== BUTTONS ===== */
 .btn-primary {
+  -webkit-appearance: none;
+  appearance: none;
   display: inline-block;
   background: var(--blue);
   color: var(--white);
-  padding: 13px 28px;
+  padding: 14px 28px;
   border-radius: 8px;
   font-size: 1rem;
   font-weight: 700;
@@ -270,9 +291,12 @@ nav { display: flex; gap: 8px; flex-wrap: wrap; }
   cursor: pointer;
   text-decoration: none;
   transition: background .2s;
+  min-height: 44px;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 .btn-primary:hover { background: var(--blue-dark); }
-.btn-primary.full-width { width: 100%; text-align: center; padding: 14px; }
+.btn-primary.full-width { width: 100%; text-align: center; padding: 15px; }
 
 /* ===== QUOTE FORM ===== */
 .quote-form {
@@ -307,14 +331,21 @@ nav { display: flex; gap: 8px; flex-wrap: wrap; }
 .form-group input,
 .form-group select,
 .form-group textarea {
-  padding: 10px 13px;
+  -webkit-appearance: none;
+  appearance: none;
+  padding: 12px 13px;
   border: 1.5px solid var(--mid-gray);
   border-radius: 7px;
-  font-size: .95rem;
+  /* 16px minimum prevents iOS auto-zoom on focus */
+  font-size: 16px;
   color: var(--text);
   background: var(--white);
   transition: border-color .2s;
   font-family: inherit;
+  min-height: 44px;
+  /* fix iOS inner shadow on inputs */
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 
 .form-group input:focus,
@@ -362,16 +393,69 @@ footer {
   color: #94a3b8;
   text-align: center;
   padding: 40px 24px;
+  /* safe area for iPhone home indicator */
+  padding-bottom: calc(40px + env(safe-area-inset-bottom));
 }
 
 footer strong { color: var(--white); }
 footer p { margin-bottom: 4px; font-size: .95rem; }
 .footer-small { font-size: .82rem; margin-top: 8px; color: #64748b; }
 
+/* ===== PRICE ESTIMATE BOX ===== */
+.price-estimate {
+  background: linear-gradient(135deg, #e8f4fd, #f0f9ff);
+  border: 2px solid var(--blue);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+}
+
+.estimate-label {
+  font-size: .78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .8px;
+  color: var(--blue-dark);
+  margin-bottom: 6px;
+}
+
+.estimate-amount {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.estimate-detail {
+  font-size: .82rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 640px) {
-  .header-inner { justify-content: center; text-align: center; }
+  .header-inner {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px 16px;
+    gap: 8px;
+  }
+  .logo { justify-content: center; }
+  nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+    width: 100%;
+  }
+  .nav-btn {
+    padding: 10px 6px;
+    font-size: .78rem;
+    text-align: center;
+  }
   .form-row { grid-template-columns: 1fr; }
-  .quote-form { padding: 24px 18px; }
-  .hero { padding: 60px 24px 50px; }
+  .quote-form { padding: 20px 16px; }
+  .hero { padding: 50px 20px 40px; }
+  .tab-content { padding: 40px 16px; }
+  .how-it-works { padding: 40px 16px; }
+  .container { padding: 0 16px; }
+  .estimate-amount { font-size: 1.3rem; }
 }
