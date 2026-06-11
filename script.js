@@ -1,3 +1,15 @@
+// ===== SERVICE TYPE TOGGLE =====
+document.querySelectorAll('.toggle-option').forEach(function(label) {
+  label.addEventListener('click', function() {
+    var radio = label.querySelector('input[type="radio"]');
+    if (!radio) return;
+    radio.checked = true;
+    document.querySelectorAll('.toggle-option').forEach(function(l) { l.classList.remove('selected'); });
+    label.classList.add('selected');
+    updateEstimate();
+  });
+});
+
 // ===== TAB NAVIGATION =====
 function showTab(name) {
   document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
@@ -23,11 +35,13 @@ document.querySelectorAll('.nav-btn').forEach(btn => {
 function prefillQuote(service, freq) {
   showTab('quote');
 
-  // set service type radio
+  // set service type radio + toggle visual
   var radio = document.querySelector('input[name="serviceType"][value="' + service + '"]');
   if (radio) {
     radio.checked = true;
-    radio.dispatchEvent(new Event('change'));
+    document.querySelectorAll('.toggle-option').forEach(function(l) { l.classList.remove('selected'); });
+    var parentLabel = radio.closest('.toggle-option');
+    if (parentLabel) parentLabel.classList.add('selected');
   }
 
   // set frequency select
@@ -115,9 +129,6 @@ function updateEstimate() {
 
 ['canCount', 'frequency'].forEach(function(id) {
   document.getElementById(id).addEventListener('input', updateEstimate);
-});
-document.querySelectorAll('input[name="serviceType"]').forEach(function(el) {
-  el.addEventListener('change', updateEstimate);
 });
 
 // ===== QUOTE SUBMIT =====

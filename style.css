@@ -344,7 +344,7 @@ nav { display: flex; gap: 8px; flex-wrap: wrap; }
   color: var(--navy);
 }
 
-.form-group input,
+.form-group input:not([type="radio"]),
 .form-group select,
 .form-group textarea {
   -webkit-appearance: none;
@@ -364,7 +364,7 @@ nav { display: flex; gap: 8px; flex-wrap: wrap; }
   box-shadow: none;
 }
 
-.form-group input:focus,
+.form-group input:not([type="radio"]):focus,
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
@@ -390,8 +390,8 @@ nav { display: flex; gap: 8px; flex-wrap: wrap; }
 .toggle-option input[type="radio"] {
   position: absolute;
   opacity: 0;
-  width: 0;
-  height: 0;
+  width: 1px;
+  height: 1px;
   pointer-events: none;
 }
 
@@ -411,7 +411,8 @@ nav { display: flex; gap: 8px; flex-wrap: wrap; }
 
 .toggle-option:last-child span { border-right: none; }
 
-.toggle-option input:checked + span {
+.toggle-option input:checked + span,
+.toggle-option.selected span {
   background: var(--blue);
   color: var(--white);
 }
