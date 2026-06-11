@@ -70,25 +70,25 @@
           <p class="section-sub">Serving homeowners and HOAs. We keep your trash cans fresh so you don't have to.</p>
 
           <div class="card-grid">
-            <div class="card">
+            <div class="card clickable" onclick="prefillQuote('residential','One-Time')">
               <h3>Single Can Clean</h3>
               <p>One-time deep clean for a single trash or recycling bin.</p>
-              <span class="tag">On-demand</span>
+              <span class="tag">One-Time</span>
             </div>
-            <div class="card">
+            <div class="card clickable" onclick="prefillQuote('residential','Monthly')">
               <h3>Monthly Plan</h3>
               <p>We clean your cans every month on pickup day — set it and forget it.</p>
-              <span class="tag">Most Popular</span>
+              <span class="tag tag-popular">Most Popular</span>
             </div>
-            <div class="card">
+            <div class="card clickable" onclick="prefillQuote('residential','Quarterly')">
               <h3>Quarterly Plan</h3>
               <p>A deep clean four times a year, timed with your trash schedule.</p>
-              <span class="tag">Budget Friendly</span>
+              <span class="tag">Quarterly</span>
             </div>
-            <div class="card">
+            <div class="card clickable" onclick="prefillQuote('residential','Custom / Let\'s Talk')">
               <h3>HOA / Neighborhood Bundle</h3>
               <p>Volume pricing for HOAs and communities. Keep every home on the block fresh.</p>
-              <span class="tag">Ask for Pricing</span>
+              <span class="tag">Volume Pricing</span>
             </div>
           </div>
 
@@ -113,25 +113,25 @@
           <p class="section-sub">Restaurants, retail, multi-family housing, and more. Keep your property clean and compliant.</p>
 
           <div class="card-grid">
-            <div class="card">
+            <div class="card clickable" onclick="prefillQuote('commercial','One-Time')">
               <h3>Dumpster Cleaning</h3>
               <p>Full interior and exterior cleaning of commercial dumpsters. Removes grease, odor, and buildup.</p>
-              <span class="tag">On-demand or Recurring</span>
+              <span class="tag">On-Demand</span>
             </div>
-            <div class="card">
+            <div class="card clickable" onclick="prefillQuote('commercial','Monthly')">
               <h3>Multi-Family / Apartments</h3>
               <p>Shared bin areas, roll-off containers, and dumpster pads cleaned on a recurring schedule.</p>
-              <span class="tag">Scheduled</span>
+              <span class="tag">Monthly</span>
             </div>
-            <div class="card">
+            <div class="card clickable" onclick="prefillQuote('commercial','Weekly')">
               <h3>Restaurant &amp; Food Service</h3>
               <p>High-frequency cleaning to meet health code and keep your back lot compliant.</p>
-              <span class="tag">Weekly Available</span>
+              <span class="tag">Weekly</span>
             </div>
-            <div class="card">
+            <div class="card clickable" onclick="prefillQuote('commercial','Custom / Let\'s Talk')">
               <h3>Retail &amp; Office Parks</h3>
               <p>Curb appeal matters. Keep shared dumpster enclosures clean and odor-free for tenants and customers.</p>
-              <span class="tag">Contract Pricing</span>
+              <span class="tag">Custom Contract</span>
             </div>
           </div>
 
@@ -159,12 +159,14 @@
 
             <div class="form-group">
               <label>Service Type</label>
-              <div class="radio-group">
-                <label class="radio-label">
-                  <input type="radio" name="serviceType" value="residential" required /> Residential
+              <div class="toggle-group" id="serviceToggle">
+                <label class="toggle-option">
+                  <input type="radio" name="serviceType" value="residential" required />
+                  <span>Residential</span>
                 </label>
-                <label class="radio-label">
-                  <input type="radio" name="serviceType" value="commercial" /> Commercial
+                <label class="toggle-option">
+                  <input type="radio" name="serviceType" value="commercial" />
+                  <span>Commercial</span>
                 </label>
               </div>
             </div>
@@ -197,6 +199,7 @@
 
             <div class="form-group">
               <label for="pickupDay">Trash Pickup Day</label>
+              <div class="select-wrap">
               <select id="pickupDay" required>
                 <option value="">-- Select Day --</option>
                 <option>Monday</option>
@@ -206,6 +209,7 @@
                 <option>Friday</option>
                 <option>Varies / Not Sure</option>
               </select>
+              </div>
             </div>
 
             <div class="form-group" id="canCountGroup">
@@ -215,14 +219,16 @@
 
             <div class="form-group">
               <label for="frequency">Preferred Frequency</label>
-              <select id="frequency" required>
-                <option value="">-- Select --</option>
-                <option>One-Time</option>
-                <option>Monthly</option>
-                <option>Quarterly</option>
-                <option>Weekly (Commercial)</option>
-                <option>Custom / Let's Talk</option>
-              </select>
+              <div class="select-wrap">
+                <select id="frequency" required>
+                  <option value="">-- Select --</option>
+                  <option>One-Time</option>
+                  <option>Quarterly</option>
+                  <option>Monthly</option>
+                  <option>Weekly</option>
+                  <option>Custom / Let's Talk</option>
+                </select>
+              </div>
             </div>
 
             <div class="price-estimate" id="priceEstimate" style="display:none;">
